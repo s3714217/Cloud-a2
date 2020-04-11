@@ -1,0 +1,83 @@
+<?php 
+    
+    include 'backend/postService.php'; 
+    
+?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <a class="navbar-brand" href="/main.html">Trade Center</a>
+              </div>
+              <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="/post.html"><span class="glyphicon glyphicon-edit"></span> Make an Offer</a></li>
+                <li><a href="/trade.html"><span class="glyphicon glyphicon-shopping-cart"></span> Trade Session</a></li>
+                <li><a href="/search.html"><span class="glyphicon glyphicon-search"></span> Search Offer</a></li>
+                <li><a href="/profile.html"><span class="glyphicon glyphicon-user"></span> 
+                  Hi  <?php echo htmlspecialchars($_SESSION["username"]); ?>!</a></li>
+               <li><a href="/"s><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+              </ul>
+            </div>
+          </nav>
+    </head>
+    <body>
+        <div class="row">
+            <h1 style="text-align:center; line-height:300%">Post an Offer</h1>
+           
+            <div class="col-sm-4"></div>
+    
+            <div class="col-sm-4">
+                <form method="post" enctype="multipart/form-data" >
+                    <div style="text-align:center; line-height:200%" class="form-group">Title: <textarea rows ="1" style="text-align:center" class="form-control" type="text" name="title" placeholder="Enter game title" required></textarea></div>
+                    <div style="text-align:center; line-height:200%" class="form-group">Description: <textarea rows ="4" style="text-align:center" class="form-control" type="text" name="description" placeholder="Enter description" required></textarea></div>
+                    <div style="text-align:center" class="form-group">
+                        <div style="text-align:center; line-height:200%">Condition:</div>
+                        <select class="form-control" name="condition">
+                          <option value="brandnew">Brand New</option>
+                          <option value="excellent">Excellent</option>
+                          <option value="good">Good</option>
+                        </select>
+                    </div>
+
+                    <div style="text-align:center" class="form-group">
+                        <div style="text-align:center; line-height:200%">Platform:</div>
+                        <select class="form-control" name="platform">
+                          <option value="Xbox">Xbox</option>
+                          <option value="PlayStation">PlayStation</option>
+                          <option value="PC">PC</option>
+                        </select>
+                    </div>
+
+                    <div style="text-align:center" class="form-group">
+                        <div style="text-align:center; line-height:200%">Transaction Method:</div>
+                        <select class="form-control" name="transaction">
+                          <option value="Trade only">Trade Only</option>
+                          <option value="Sell only">Sell Only</option>
+                          <option value="Trade and Sell">Trade and Sell</option>
+                        </select>
+                    </div>
+
+                    <div style="text-align:center" class="form-group">Price: $<input style="text-align:center" class="form-control" type="number"  name="price" placeholder="Enter price (for Sell Only or Trade and Sell"></div>
+
+                    <div style="text-align:center" class="form-group">
+                        <div style="text-align:center; line-height:200%">Posting Method:</div>
+                        <select class="form-control" name="posting">
+                          <option value="Pick-up">Pick up</option>
+                          <option value="Mail">Mail post</option>
+                        </select>
+                    </div>
+                    <div style="text-align:center; line-height:200%" class="form-group">Upload an Image:</div><input type='file' name="img" required accept="image/*"/> 
+                    <div style="text-align:center"><input type="submit" value="Post" name="post"></div>
+                </form>
+            </div>
+          </div>
+          <div class="col-sm-4"></div>
+       
+    </body>
+
+</html>

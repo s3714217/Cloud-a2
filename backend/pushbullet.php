@@ -1,16 +1,16 @@
 <?php
-    function pushbullet($msg){
+    function pushbullet($msg, $id, $deviceid){
 
         $data = json_encode(array(
             'type' => 'note',
             'title' => 'NOTIFICATION ALERT',
             'body' => $msg,
-            'device_iden' => 'ujCf2RlGpNcsjwmjkYnFWS'
+            'device_iden' => $deviceid
         ));
     
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, 'https://api.pushbullet.com/v2/pushes');
-        curl_setopt($curl, CURLOPT_USERPWD, 'o.C3FgdE4rHtw1gwoJMJw1vAfnJMH87Wps');
+        curl_setopt($curl, CURLOPT_USERPWD, $id);
         curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'POST');
         curl_setopt($curl, CURLOPT_HTTPHEADER, ['Content-Type: application/json', 'Content-Length: ' . strlen($data)]);
         curl_setopt($curl, CURLOPT_POSTFIELDS, $data);

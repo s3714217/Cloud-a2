@@ -6,13 +6,18 @@
     use Google\Cloud\Datastore\DatastoreClient;
     use Google\Cloud\Storage\StorageClient;
 
+    $projectId = 'mycloudapp-2';
+    $datastore = new DatastoreClient([
+        'projectId' => $projectId]);
+
+
     function createTradeSession($buyer, $item)
     {
-        $projectId = 'mycloudapp-2';
+        $datastore = new DatastoreClient([
+            'projectId' => $projectId]);
         $kind = 'trade';
 
-        $datastore = new DatastoreClient([
-        'projectId' => $projectId]);
+       
 
         $id = htmlspecialchars($buyer).htmlspecialchars($item);
         $key = $datastore->key($kind, $id);
@@ -40,7 +45,8 @@
 
     function pushbullet($msg, $id)
     {
-
+        $datastore = new DatastoreClient([
+            'projectId' => $projectId]);
         $data = json_encode(array(
             'type' => 'note',
             'title' => 'Game Trading Center',
@@ -62,13 +68,12 @@
 
     function getAllTrade($username)
     {
-        $projectId = 'mycloudapp-2';
-        $kind = 'trade';
         $bucketstorage = 'mycloudapp-image-storage';
-
+    
         $datastore = new DatastoreClient([
-            'projectId' => $projectId
-        ]);
+            'projectId' => $projectId]);
+        $kind = 'trade';
+       
 
         $query = $datastore->query()
         ->kind($kind);
@@ -144,11 +149,9 @@
 
     function removeTrade($tradeID)
     {
-        $projectId = 'mycloudapp-2';
-        $kind = 'trade';
         $datastore = new DatastoreClient([
-            'projectId' => $projectId
-        ]);
+            'projectId' => $projectId]);
+        $kind = 'trade';
         $id = htmlspecialchars($_SESSION['username']).$tradeID;
         $key = $datastore->key($kind, $id);
         $datastore->delete($key);

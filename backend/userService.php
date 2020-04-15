@@ -3,15 +3,15 @@
 require __DIR__ . '/vendor/autoload.php';
 use Google\Cloud\Datastore\DatastoreClient;
 
+$projectId = 'mycloudapp-2';
 
 
 function register($username, $password, $email, $phone)
 {
-    $projectId = 'mycloudapp-2';
+    $datastore = new DatastoreClient([
+        'projectId' => $projectId]);
     $kind = 'user';
 
-    $datastore = new DatastoreClient([
-    'projectId' => $projectId]);
     $key = $datastore->key($kind, htmlspecialchars($username));
     $user = $datastore->lookup($key);
 
@@ -43,12 +43,11 @@ function register($username, $password, $email, $phone)
 
 function login($username, $password)
 {   
-    $projectId = 'mycloudapp-2';
-    $kind = 'user';
-
     $datastore = new DatastoreClient([
-    'projectId' => $projectId]);
+        'projectId' => $projectId]);
+    $kind = 'user';
     $key = $datastore->key($kind, htmlspecialchars($username));
+    
     $user = $datastore->lookup($key);
 
     if($user['password'] == htmlspecialchars($password))
@@ -71,11 +70,10 @@ function login($username, $password)
 
 function displayUserInfo($username)
 {   
-    $projectId = 'mycloudapp-2';
+    $datastore = new DatastoreClient([
+        'projectId' => $projectId]);
     $kind = 'user';
 
-    $datastore = new DatastoreClient([
-    'projectId' => $projectId]);
     $key = $datastore->key($kind, htmlspecialchars($username));
     $user = $datastore->lookup($key);
 
@@ -92,12 +90,9 @@ function displayUserInfo($username)
 
 function editInfo($username, $type, $newInfo)
 {   
-
-    $projectId = 'mycloudapp-2';
-    $kind = 'user';
-
     $datastore = new DatastoreClient([
-    'projectId' => $projectId]);
+        'projectId' => $projectId]);
+    $kind = 'user';
     $key = $datastore->key($kind, htmlspecialchars($username));
     $user = $datastore->lookup($key);
 

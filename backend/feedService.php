@@ -7,10 +7,10 @@
     use Google\Cloud\Storage\StorageClient;
 
     $projectId = 'mycloudapp-2';
-    $kind = 'game';
+    
+    
 
-    $datastore = new DatastoreClient([
-    'projectId' => $projectId]);
+    $kind = 'game';
     $tocount =0;
     $socount =0;
     $tscount =0;
@@ -33,15 +33,12 @@
     
     function deleteItems($gameID)
     {
-        $projectId = 'mycloudapp-2';
+      $datastore = new DatastoreClient([
+        'projectId' => $projectId]);
         $kind = 'game';
-        $datastore = new DatastoreClient([
-            'projectId' => $projectId
-        ]);
+
         $key = $datastore->key($kind, htmlspecialchars($gameID));
         $datastore->delete($key);
-
-        $bucketstorage = 'mycloudapp-image-storage';
         $storage = new StorageClient();
         $bucket = $storage->bucket($bucketstorage); // Put your bucket name here.
         
@@ -55,13 +52,10 @@
 
     function display($user)
     {
-        $projectId = 'mycloudapp-2';
+      $bucketstorage = 'mycloudapp-image-storage';
+      $datastore = new DatastoreClient([
+        'projectId' => $projectId]);
         $kind = 'game';
-        $bucketstorage = 'mycloudapp-image-storage';
-
-        $datastore = new DatastoreClient([
-            'projectId' => $projectId
-        ]);
 
         $query = $datastore->query()
         ->kind($kind)->order('date');
@@ -163,11 +157,11 @@
     
     function displayFullItem($itemid)
     {
-        $projectId = 'mycloudapp-2';
+      $bucketstorage = 'mycloudapp-image-storage';
+      $datastore = new DatastoreClient([
+        'projectId' => $projectId]);
         $kind = 'game';
 
-        $datastore = new DatastoreClient([
-        'projectId' => $projectId]);
         $key = $datastore->key($kind, htmlspecialchars($itemid));
         $item = $datastore->lookup($key);
 
@@ -203,7 +197,7 @@
         if($item['posting'] == 'Pick-up')
         {
           echo "<div>Pick up location:</div>
-          <img src = 'https://maps.googleapis.com/maps/api/staticmap?center=".$item['location']."&zoom=15&size=400x400&region=AU&key=AIzaSyDJ8xJEuceNVuFVNuOpZImdcvyakOYbJYk' width='200' height='200'>";
+          <img src = 'https://maps.googleapis.com/maps/api/staticmap?center=".$item['location']."&zoom=15&size=400x400&region=AU&key=AIzaSyDJ8xJEuceNVuFVNuOpZImdcvyakOYbJYk' width='300' height='300'>";
         }
 
     }

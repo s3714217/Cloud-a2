@@ -7,12 +7,14 @@
     use Google\Cloud\Storage\StorageClient;
 
     $projectId = 'mycloudapp-2';
-    $kind = 'game';
     
-    
+
 function uploadImg($filename, $name, $user)
 {
     $bucketstorage = 'mycloudapp-image-storage';
+    $datastore = new DatastoreClient([
+        'projectId' => $projectId
+    ]);
     $myfile = fopen($filename,'r');
     $storage = new StorageClient();
     $bucket = $storage->bucket($bucketstorage); // Put your bucket name here.
@@ -22,7 +24,7 @@ function uploadImg($filename, $name, $user)
 
 function getImg($itemid, $username)
 {
-
+    
     $bucketstorage = 'mycloudapp-image-storage';
     echo "  <img src='https://storage.cloud.google.com/".$bucketstorage."/".$username."/".$itemid.".jpg' width='400' height='600'>"; 
 
@@ -30,12 +32,11 @@ function getImg($itemid, $username)
 
 function postsmth()
 {   
-    $projectId = 'mycloudapp-2';
-    $kind = 'game';
-
+    $bucketstorage = 'mycloudapp-image-storage';
     $datastore = new DatastoreClient([
         'projectId' => $projectId
     ]);
+    $kind = 'game';
     if(isset($_FILES['img']['name']))
     {   
         $id = mt_rand();

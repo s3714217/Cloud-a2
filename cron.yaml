@@ -1,0 +1,4 @@
+cron:
+- description: "daily notification"
+  url: /notificationsending/adminaccess01/action=cronjobnotifyingallusers/time=every12h
+  schedule: every day 10:00

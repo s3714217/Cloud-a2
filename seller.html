@@ -1,6 +1,9 @@
-<?php include_once 'backend/tradeService.php';
+<?php 
+    
+include_once 'backend/userService.php'; 
+include_once 'backend/feedService.php';
+    
 ?>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,9 +17,9 @@
               </div>
               <ul class="nav navbar-nav navbar-right">
                 <li><a href="/post.html"><span class="glyphicon glyphicon-edit"></span> Post</a></li>
-                <li class = "active"><a href="/trade.html"><span class="glyphicon glyphicon-shopping-cart"></span> My cart</a></li>
+                <li><a href="/trade.html"><span class="glyphicon glyphicon-shopping-cart"></span> My cart</a></li>
                 <li><a href="/search.html"><span class="glyphicon glyphicon-search"></span> Search</a></li>
-                <li ><a href="/profile.html"><span class="glyphicon glyphicon-user"></span> 
+                <li><a href="/profile.html"><span class="glyphicon glyphicon-user"></span> 
                   G'day  <?php echo htmlspecialchars($_SESSION["username"]); ?></a></li>
                <li><a href="/"s><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
               </ul>
@@ -24,19 +27,23 @@
           </nav>
     </head>
     <body>
+        <h2 style="text-align:center; line-height:300%">Seller Profile</h2>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-4">
+            <h3>My details</h3>
+            <?php displayUserInfo($_SESSION['sellerprofile']); ?>
+            <h2 style='text-align:center; line-height:300%'></h2>
+            <form method="post">
+                <div style="text-align:left"><input type="submit" value="Edit info" name="edit"></div>
+            </form>
+            <h2 style='text-align:center; line-height:300%'></h2>
+            <?php displayedit(); ?> 
+        </div>
 
-      <h2 style="text-align:center; line-height:300%">My Cart</h2>
+        <div class="col-sm-6">
+            <h3>My offers</h3>
+            <?php display($_SESSION['sellerprofile'])?>
+        </div>
         
-      <div class="col-sm-3"></div>
-      <div class="col-sm-5">
-
-        
-       
-      <?php getAllTrade($_SESSION['username']); ?>
-   
-
-
-      </div>
-      <div class="col-sm-3"></div>
     </body>
 </html>

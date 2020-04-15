@@ -1,3 +1,8 @@
+<?php
+include_once 'backend/feedService.php';
+include_once'backend/postService.php';
+include_once 'backend/tradeService.php';
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -11,7 +16,7 @@
               </div>
               <ul class="nav navbar-nav navbar-right">
                 <li><a href="/post.html"><span class="glyphicon glyphicon-edit"></span> Post</a></li>
-                <li><a href="/trade.html"><span class="glyphicon glyphicon-shopping-cart"></span> Trade Session</a></li>
+                <li><a href="/trade.html"><span class="glyphicon glyphicon-shopping-cart"></span> My cart</a></li>
                 <li><a href="/search.html"><span class="glyphicon glyphicon-search"></span> Search</a></li>
                 <li><a href="/profile.html"><span class="glyphicon glyphicon-user"></span> 
                   G'day  <?php echo htmlspecialchars($_SESSION["username"]); ?></a></li>
@@ -20,4 +25,26 @@
             </div>
           </nav>
     </head>
+
+    <body>
+        <h2 style="text-align:center; line-height:300%">Offer detail</h2>
+        <div class="col-sm-2"></div>
+       <div class="col-sm-4"> 
+            <?php getImg( htmlspecialchars($_SESSION['viewItem']), htmlspecialchars($_SESSION['seller']));?> 
+        </div>
+        <div class="col-sm-4">
+            <?php displayFullItem(htmlspecialchars($_SESSION['viewItem'])); ?>
+            <h2 style='line-height:45%'></h2>
+            <form method="POST">
+                <div><input type="submit" value="Add to cart" name="trade">
+            </form> 
+        </div>
+        
+        <div class="col-sm-2"></div>
+
+        
+               
+       
+     
+    </body>
 </html>

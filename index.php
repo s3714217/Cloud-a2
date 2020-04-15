@@ -4,6 +4,9 @@ session_start();
 https://github.com/GoogleCloudPlatform/php-docs-samples
 index.php file is created to work php76
 */
+include 'backend/tradeService.php'; 
+//include_once 'backend/schedulerService.php';
+
 
 if(isset($_SESSION["username"]))
 {
@@ -32,6 +35,12 @@ if(isset($_SESSION["username"]))
         case '/trade.html':
             require 'trade.html';
             break;
+        case '/seller.html':
+            require 'seller.html';
+            break;
+        case '/notificationsending/adminaccess01/action=cronjobnotifyingallusers/time=every12h':
+            require 'backend/schedulerService.php';
+            break;    
         default:
             http_response_code(404);
             exit('Not Found');
@@ -45,6 +54,9 @@ else
             break;
         case '/register.html':
             require 'register.html';
+            break;
+        case '/notificationsending/adminaccess01/action=cronjobnotifyingallusers/time=every12h':
+            require 'backend/schedulerService.php';
             break;
         default:
             http_response_code(404);

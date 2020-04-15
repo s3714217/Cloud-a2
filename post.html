@@ -1,6 +1,6 @@
 <?php 
     
-    include 'backend/postService.php'; 
+include_once 'backend/postService.php'; 
     
 ?>
 <!DOCTYPE html>
@@ -15,11 +15,11 @@
                 <a class="navbar-brand" href="/main.html">Trade Center</a>
               </div>
               <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="/post.html"><span class="glyphicon glyphicon-edit"></span> Make an Offer</a></li>
-                <li><a href="/trade.html"><span class="glyphicon glyphicon-shopping-cart"></span> Trade Session</a></li>
+                <li class="active"><a href="/post.html"><span class="glyphicon glyphicon-edit"></span> Post</a></li>
+                <li><a href="/trade.html"><span class="glyphicon glyphicon-shopping-cart"></span> My cart</a></li>
                 <li><a href="/search.html"><span class="glyphicon glyphicon-search"></span> Search Offer</a></li>
                 <li><a href="/profile.html"><span class="glyphicon glyphicon-user"></span> 
-                  Hi  <?php echo htmlspecialchars($_SESSION["username"]); ?>!</a></li>
+                  G'day  <?php echo htmlspecialchars($_SESSION["username"]); ?></a></li>
                <li><a href="/"s><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
               </ul>
             </div>
@@ -58,7 +58,7 @@
                         <select class="form-control" name="transaction">
                           <option value="Trade only">Trade Only</option>
                           <option value="Sell only">Sell Only</option>
-                          <option value="Trade and Sell">Trade and Sell</option>
+                          <option value="Sell only">Trade and Sell</option>
                         </select>
                     </div>
 
@@ -71,6 +71,10 @@
                           <option value="Mail">Mail post</option>
                         </select>
                     </div>
+
+                    <div style="text-align:center" class="form-group">Pick up suburb:<input style="text-align:center" class="form-control" type="text"  name="location" placeholder="Enter prefer pick up suburb (for Pick-up only)"></div>
+
+
                     <div style="text-align:center; line-height:200%" class="form-group">Upload an Image:</div><input type='file' name="img" required accept="image/*"/> 
                     <div style="text-align:center"><input type="submit" value="Post" name="post"></div>
                 </form>

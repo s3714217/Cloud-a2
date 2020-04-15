@@ -85,7 +85,7 @@ function displayUserInfo($username)
                 <div>Email: ".$user['email']." </div>
                 <div>Phone: ".$user['phone']." </div>
                 <div>Pushbullet id: ".$user['PBid']." </div>
-                <div>Pushbullet device: ".$user['PBdevice']." </div>
+              
     ";
 
 }
@@ -117,7 +117,6 @@ function displayedit()
                           <option value='phone'>Phone</option>
                           <option value='password'>Password</option>
                           <option value='PBid'>Pushbullet id</option>
-                          <option value='PBdevice'>Pushbullet device</option>
                 </select>
                 <h2 style='text-align:center; line-height:300%'></h2>
                 <div>New info:</div>

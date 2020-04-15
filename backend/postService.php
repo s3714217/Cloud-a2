@@ -20,6 +20,14 @@ function uploadImg($filename, $name, $user)
     [ 'name' => $user.'/'.$name.'.jpg']);
 }
 
+function getImg($itemid, $username)
+{
+
+    $bucketstorage = 'mycloudapp-image-storage';
+    echo "  <img src='https://storage.cloud.google.com/".$bucketstorage."/".$username."/".$itemid.".jpg' width='400' height='600'>"; 
+
+}
+
 function postsmth()
 {   
     $projectId = 'mycloudapp-2';
@@ -44,6 +52,7 @@ function postsmth()
                 'description' => htmlspecialchars($_POST['description']),
                 'transaction' => htmlspecialchars($_POST['transaction']),
                 'posting' => htmlspecialchars($_POST['posting']),
+                'location' => htmlspecialchars($_POST['location']),
                 'date' => new DateTime(),
                 'user' => htmlspecialchars($_SESSION["username"]),
                 'accessID' => $id,

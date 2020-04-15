@@ -6,14 +6,14 @@
     use Google\Cloud\Datastore\DatastoreClient;
     use Google\Cloud\Storage\StorageClient;
 
+    $projectId = 'mycloudapp-2';
+    $kind = 'game';
+
+    $datastore = new DatastoreClient([
+    'projectId' => $projectId]);
     $tocount =0;
     $socount =0;
     $tscount =0;
-    $projectId = 'mycloudapp-2';
-    $kind = 'game';
-    $datastore = new DatastoreClient([
-            'projectId' => $projectId
-        ]);
     $query = $datastore->query()->kind($kind);
     $result = $datastore->runQuery($query);
 
@@ -80,11 +80,11 @@
         <div class='panel-body' style='text-align:left'>
           
           <div class='col-sm-2'>
-            <img src='https://storage.cloud.google.com/".$bucketstorage."/".$display['user']."/".$display['accessID'].".jpg' width='80' height='80'>
+            <img src='https://storage.cloud.google.com/".$bucketstorage."/".$display['user']."/".$display['accessID'].".jpg' width='60' height='80'>
           </div>
          
           <div class='col-sm-8' style='text-align:left'>
-          <div>Title: <a href=''>".$display['title']."</a></div>
+          <div>Title:".$display['title']."</div>
             <div>Transaction method: ".$display['transaction']."</div>
             <div>Platform: ".$display['platform']."</div>
             <div>Date posted: ".$display['date']->format('Y-m-d h:i')."</div>
@@ -97,9 +97,22 @@
            echo "
           </div>
           <div class='col-sm-2' style='text-align:center'>
-              <form method='post'>
+
+          ";
+           
+          if($user == $_SESSION['username'])
+          {
+           echo "<form method='post'>
                 <button type='submit' value='".$display['accessID']."' name='Delete'>
                     Delete
+                </button>
+              </form>";
+          }
+
+          echo"
+              <form method='post'>
+                <button type='submit' value='".$display['accessID']."' name='View'>
+                    View
                 </button>
               </form>
           </div>
@@ -119,11 +132,11 @@
         <div class='panel-body' style='text-align:left'>
           
           <div class='col-sm-2'>
-            <img src='https://storage.cloud.google.com/".$bucketstorage."/".$display['user']."/".$display['accessID'].".jpg' width='80' height='80'>
+            <img src='https://storage.cloud.google.com/".$bucketstorage."/".$display['user']."/".$display['accessID'].".jpg' width='60' height='80'>
           </div>
          
-          <div class='col-sm-10' style='text-align:left'>
-          <div>Title: <a href=''>".$display['title']."</a></div>
+          <div class='col-sm-8' style='text-align:left'>
+          <div>Title:".$display['title']."</div>
             <div>Transaction method: ".$display['transaction']."</div>
             <div>Platform: ".$display['platform']."</div>
             <div>Date posted: ".$display['date']->format('Y-m-d h:i')."</div>
@@ -135,14 +148,93 @@
                 }
            echo "
           </div>
+          <div class='col-sm-2' style='text-align:center'>
+          <form method='post'>
+            <button type='submit' value='".$display['accessID']."' name='View'>
+                View
+            </button>
+          </form>
+        </div>
          </div>
       </div>";
       }
         }
     }
     
+    function displayFullItem($itemid)
+    {
+        $projectId = 'mycloudapp-2';
+        $kind = 'game';
+
+        $datastore = new DatastoreClient([
+        'projectId' => $projectId]);
+        $key = $datastore->key($kind, htmlspecialchars($itemid));
+        $item = $datastore->lookup($key);
+
+        echo "
+            <h2 style='text-align:center; line-height:400%'></h2>
+            <div>Title: ".$item['title']."</div>
+            <h2 style='text-align:center; line-height:45%'></h2>
+            <div>Item ID: ".$item['accessID']."</div>
+            <h2 style='text-align:center; line-height:45%'></h2>
+            <div>Condition: ".$item['condition']."</div>
+            <h2 style='text-align:center; line-height:45%'></h2>
+            <div>Platform: ".$item['platform']."</div>
+            <h2 style='text-align:center; line-height:45%'></h2>
+            <div>Delivery type: ".$item['posting']."</div>
+            <h2 style='text-align:center; line-height:45%'></h2>
+            <div>Date posted: ".$item['date']->format('Y-m-d h:i')."</div>
+            <h2 style='text-align:center; line-height:45%'></h2>
+            <div>Transaction type: ".$item['transaction']."</div>
+            <h2 style='text-align:center; line-height:45%'></h2>
+            ";
+        if($item['transaction'] != 'Trade only')
+        {
+            echo "<div>Price: $".$item['price']."</div>
+            <h2 style='text-align:center; line-height:45%'></h2>
+            ";
+
+        }
+        echo  " <div>Offered by: ".$item['user']."</div>
+                <h2 style='text-align:center; line-height:45%'></h2>
+                <div>Description: ".$item['description']."</div>
+                <h2 style='text-align:center; line-height:50%'></h2>
+        ";
+        if($item['posting'] == 'Pick-up')
+        {
+          echo "<div>Pick up location:</div>
+          <img src = 'https://maps.googleapis.com/maps/api/staticmap?center=".$item['location']."&zoom=15&size=400x400&region=AU&key=AIzaSyDJ8xJEuceNVuFVNuOpZImdcvyakOYbJYk' width='200' height='200'>";
+        }
+
+    }
+
+
     if(isset($_POST['Delete']))
     {
         deleteItems($_POST['Delete']);
     }
+
+    if(isset($_POST['View']))
+    {
+        $_SESSION['viewItem'] = htmlspecialchars($_POST['View']);
+        $projectId = 'mycloudapp-2';
+        $kind = 'game';
+
+        $datastore = new DatastoreClient([
+        'projectId' => $projectId]);
+        $key = $datastore->key($kind, htmlspecialchars($_SESSION['viewItem']));
+        $item = $datastore->lookup($key);
+        
+        $_SESSION['seller'] = $item['user'];
+        
+
+        echo "<script type='text/javascript'>
+                 window.location.href='/product.html';
+            </script>";
+        exit();
+    }
+
+    
+
+
 ?>

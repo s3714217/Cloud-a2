@@ -2,11 +2,12 @@
 
     //https://cloud.google.com/datastore/docs/datastore-api-tutorial
     require __DIR__ . '/vendor/autoload.php';
-
+    require_once 'config.php';
+    
     use Google\Cloud\Datastore\DatastoreClient;
     use Google\Cloud\Storage\StorageClient;
 
-    $projectId = 'mycloudapp-2';
+    $projectId = getenv("MY_PROJECT_ID");
     $datastore = new DatastoreClient([
         'projectId' => $projectId]);
 
@@ -68,7 +69,7 @@
 
     function getAllTrade($username)
     {
-        $bucketstorage = 'mycloudapp-image-storage';
+        $bucketstorage = getenv("MY_BUCKET_ID");
     
         $datastore = new DatastoreClient([
             'projectId' => $projectId]);

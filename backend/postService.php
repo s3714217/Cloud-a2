@@ -2,16 +2,17 @@
 
     //https://cloud.google.com/datastore/docs/datastore-api-tutorial
     require __DIR__ . '/vendor/autoload.php';
-
+    require_once 'config.php';
+    
     use Google\Cloud\Datastore\DatastoreClient;
     use Google\Cloud\Storage\StorageClient;
 
-    $projectId = 'mycloudapp-2';
+    $projectId = getenv("MY_PROJECT_ID");
     
 
 function uploadImg($filename, $name, $user)
 {
-    $bucketstorage = 'mycloudapp-image-storage';
+    $bucketstorage = getenv("MY_BUCKET_ID");
     $datastore = new DatastoreClient([
         'projectId' => $projectId
     ]);
@@ -25,14 +26,14 @@ function uploadImg($filename, $name, $user)
 function getImg($itemid, $username)
 {
     
-    $bucketstorage = 'mycloudapp-image-storage';
+    $bucketstorage = getenv("MY_BUCKET_ID");
     echo "  <img src='https://storage.cloud.google.com/".$bucketstorage."/".$username."/".$itemid.".jpg' width='400' height='600'>"; 
 
 }
 
 function postsmth()
 {   
-    $bucketstorage = 'mycloudapp-image-storage';
+    $bucketstorage = getenv("MY_BUCKET_ID");
     $datastore = new DatastoreClient([
         'projectId' => $projectId
     ]);

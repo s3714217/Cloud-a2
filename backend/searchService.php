@@ -28,12 +28,9 @@ if(isset($_POST['View']))
 	exit();
 }
 
-if (isset($_GET['platform']))
+if (isset($_GET['platform']) && $_GET['platform'] )
 {
-	if ($_GET['platform'])
-	{
-		$query = $query->filter('platform', '=', $_GET['platform']);
-	}
+	$query = $query->filter('platform', '=', $_GET['platform']);
 }
 
 if (isset($_GET['search']))

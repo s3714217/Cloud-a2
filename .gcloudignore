@@ -12,6 +12,3 @@
 # below:
 .git
 .gitignore
-
-# PHP Composer dependencies:
-/vendor/

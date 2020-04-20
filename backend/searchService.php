@@ -33,14 +33,54 @@ if (isset($_GET['platform']) && $_GET['platform'] )
 	$query = $query->filter('platform', '=', $_GET['platform']);
 }
 
+if (isset($_GET['transaction']) && $_GET['transaction'] )
+{
+	$query = $query->filter('transaction', '=', $_GET['transaction']);
+}
+
+if (isset($_GET['posting']) && $_GET['posting'] )
+{
+	$query = $query->filter('posting', '=', $_GET['posting']);
+}
+
+if (isset($_GET['condition']) && $_GET['condition'] )
+{
+	$query = $query->filter('condition', '=', $_GET['condition']);
+}
+
+
+$titleSearch = "";
+if (isset($_GET['title']) && $_GET['title'])
+{
+	$titleSearch = $_GET['title'];
+}
+
 if (isset($_GET['search']))
 {
 	$result = $datastore->runQuery($query);
 	$arr_result = iterator_to_array($result);
+
+	if (!$arr_result)
+	{
+		echo '
+		<div style="text-align: center;">
+			<h4>No Games found. Change Filters.</h4>
+		</div>';
+	}
 }
 ?>
 
-<?foreach(array_reverse($arr_result) as $display) { ?>
+<?php if ($arr_result) { ?>
+<?foreach(array_reverse($arr_result) as $display)
+{ 
+	if ($titleSearch )
+	{
+		if (!(stripos($display['title'], $titleSearch)!==false))
+		{
+			continue;
+		}
+	}
+	?>
 	<div class='panel panel-default'>
 		<div class='panel-body' style='text-align:left'>
 			<div class='col-sm-2'>
@@ -69,4 +109,5 @@ if (isset($_GET['search']))
 		</div>
 	</div>
 
+<?php } ?>
 <?php } ?>

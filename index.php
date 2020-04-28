@@ -12,8 +12,11 @@ if(isset($_SESSION["username"]))
 {
     switch (@parse_url($_SERVER['REQUEST_URI'])['path']) {
         case '/':
-            require 'login.html';
+        require 'redirect.html';
             break;
+        case '/login.html':
+        require 'login.html';
+            break;            
         case '/register.html':
             require 'register.html';
             break;
@@ -53,6 +56,9 @@ else
 {
     switch (@parse_url($_SERVER['REQUEST_URI'])['path']) {
         case '/':
+            require 'redirect.html';
+            break;
+        case '/login.html':
             require 'login.html';
             break;
         case '/register.html':

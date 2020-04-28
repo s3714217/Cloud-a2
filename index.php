@@ -11,9 +11,10 @@ include 'backend/tradeService.php';
 if(isset($_SESSION["username"]))
 {
     switch (@parse_url($_SERVER['REQUEST_URI'])['path']) {
+        
         case '/':
-            require 'login.html';
-            break;
+        require 'login.html';
+            break;            
         case '/register.html':
             require 'register.html';
             break;
@@ -52,6 +53,7 @@ if(isset($_SESSION["username"]))
 else
 {
     switch (@parse_url($_SERVER['REQUEST_URI'])['path']) {
+       
         case '/':
             require 'login.html';
             break;

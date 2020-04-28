@@ -15,15 +15,15 @@ include_once 'backend/searchService.php';
         <nav class="navbar navbar-default">
             <div class="container-fluid">
               <div class="navbar-header">
-                <a class="navbar-brand" href="/main.html">Trade Center</a>
+                <a class="navbar-brand" href="/main.html">Sàn Trao Đổi</a>
               </div>
               <ul class="nav navbar-nav navbar-right">
-                <li><a href="/post.html"><span class="glyphicon glyphicon-edit"></span> Post</a></li>
-                <li><a href="/trade.html"><span class="glyphicon glyphicon-shopping-cart"></span> My cart</a></li>
-                <li class = "active"><a href="/search.html"><span class="glyphicon glyphicon-search"></span> Search</a></li>
+                <li><a href="/post.html"><span class="glyphicon glyphicon-edit"></span> Đăng bài</a></li>
+                <li><a href="/trade.html"><span class="glyphicon glyphicon-shopping-cart"></span> Giỏ hàng</a></li>
+                <li class = "active"><a href="/search.html"><span class="glyphicon glyphicon-search"></span>Tìm kiếm</a></li>
                 <li ><a href="/profile.html"><span class="glyphicon glyphicon-user"></span> 
                   G'day  <?php echo htmlspecialchars($_SESSION["username"]); ?></a></li>
-               <li><a href="/"s><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+               <li><a href="/"s><span class="glyphicon glyphicon-log-out"></span> Thoát</a></li>
               </ul>
             </div>
           </nav>
@@ -67,21 +67,21 @@ include_once 'backend/searchService.php';
         <div class="pretty p-default p-curve p-pulse">
           <input type="radio" name="condition" value="brandnew">
           <div class="state p-success-o">
-            <label> Brand New</label>
+            <label> Mới</label>
           </div>
         </div>
 
         <div class="pretty p-default p-curve p-pulse">
           <input type="radio" name="condition" value="excellent">
           <div class="state p-success-o">
-            <label> Excellent</label>
+            <label> Rất tốt</label>
           </div>
         </div>
 
         <div class="pretty p-default p-curve p-pulse">
           <input type="radio" name="condition" value="good">
           <div class="state p-success-o">
-            <label> Good</label>
+            <label> Tốt</label>
           </div>
         </div>
         
@@ -97,7 +97,7 @@ include_once 'backend/searchService.php';
         <div class="pretty p-switch p-slim">
           <input type="checkbox" name="posting" value="Mail" />
           <div class="state p-success-o">
-            <label> Mail Only</label>
+            <label> Bưu điện</label>
           </div>
         </div>
       </div>

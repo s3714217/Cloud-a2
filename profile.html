@@ -13,24 +13,24 @@ include_once 'backend/feedService.php';
         <nav class="navbar navbar-default">
             <div class="container-fluid">
               <div class="navbar-header">
-                <a class="navbar-brand" href="/main.html">Trade Center</a>
+                <a class="navbar-brand" href="/main.html">Sàn trao đổi</a>
               </div>
               <ul class="nav navbar-nav navbar-right">
-                <li><a href="/post.html"><span class="glyphicon glyphicon-edit"></span> Post</a></li>
-                <li><a href="/trade.html"><span class="glyphicon glyphicon-shopping-cart"></span> My cart</a></li>
-                <li><a href="/search.html"><span class="glyphicon glyphicon-search"></span> Search</a></li>
+                <li><a href="/post.html"><span class="glyphicon glyphicon-edit"></span> Đăng bài</a></li>
+                <li><a href="/trade.html"><span class="glyphicon glyphicon-shopping-cart"></span> Giỏ hàng</a></li>
+                <li><a href="/search.html"><span class="glyphicon glyphicon-search"></span> Tìm kiếm</a></li>
                 <li class = "active"><a href="/profile.html"><span class="glyphicon glyphicon-user"></span> 
                   G'day  <?php echo htmlspecialchars($_SESSION["username"]); ?></a></li>
-               <li><a href="/"s><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+               <li><a href="/"s><span class="glyphicon glyphicon-log-out"></span> Thoát</a></li>
               </ul>
             </div>
           </nav>
     </head>
     <body>
-        <h2 style="text-align:center; line-height:300%">Personal Profile</h2>
+        <h2 style="text-align:center; line-height:300%">Thông tin của tôi</h2>
         <div class="col-sm-2"></div>
         <div class="col-sm-4">
-            <h3>My details</h3>
+            <h3>Thông tin cá nhân</h3>
             <?php displayUserInfo($_SESSION['username']); ?>
             <h2 style='text-align:center; line-height:300%'></h2>
             <form method="post">
@@ -41,7 +41,7 @@ include_once 'backend/feedService.php';
         </div>
 
         <div class="col-sm-6">
-            <h3>My offers</h3>
+            <h3>Sản phẩm của tôi</h3>
             <?php display($_SESSION['username'])?>
         </div>
         

@@ -2,14 +2,14 @@
 
     //https://cloud.google.com/datastore/docs/datastore-api-tutorial
     require __DIR__ . '/vendor/autoload.php';
+    require_once 'config.php';
 
     use Google\Cloud\Datastore\DatastoreClient;
     use Google\Cloud\Storage\StorageClient;
 
-    $projectId = 'mycloudapp-2';
+    $projectId = getenv("MY_PROJECT_ID");
     
     
-
     $kind = 'game';
     $tocount =0;
     $socount =0;
@@ -40,6 +40,7 @@
         $key = $datastore->key($kind, htmlspecialchars($gameID));
         $datastore->delete($key);
         $storage = new StorageClient();
+        $bucketstorage = getenv("MY_BUCKET_ID");
         $bucket = $storage->bucket($bucketstorage); // Put your bucket name here.
         
         $objectName = htmlspecialchars($_SESSION['username']).'/'.htmlspecialchars($gameID).'.jpg';
@@ -52,7 +53,7 @@
 
     function display($user)
     {
-      $bucketstorage = 'mycloudapp-image-storage';
+      $bucketstorage = getenv("MY_BUCKET_ID");
       $datastore = new DatastoreClient([
         'projectId' => $projectId]);
         $kind = 'game';
@@ -157,7 +158,7 @@
     
     function displayFullItem($itemid)
     {
-      $bucketstorage = 'mycloudapp-image-storage';
+      $bucketstorage = getenv("MY_BUCKET_ID");
       $datastore = new DatastoreClient([
         'projectId' => $projectId]);
         $kind = 'game';
@@ -211,7 +212,7 @@
     if(isset($_POST['View']))
     {
         $_SESSION['viewItem'] = htmlspecialchars($_POST['View']);
-        $projectId = 'mycloudapp-2';
+        $projectId = getenv("MY_PROJECT_ID");
         $kind = 'game';
 
         $datastore = new DatastoreClient([

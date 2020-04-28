@@ -38,6 +38,9 @@ if(isset($_SESSION["username"]))
         case '/seller.html':
             require 'seller.html';
             break;
+        case '/backend/searchService.php':
+            require 'backend/searchService.php';
+            break;
         case '/notificationsending/adminaccess01/action=cronjobnotifyingallusers/time=every12h':
             require 'backend/schedulerService.php';
             break;    

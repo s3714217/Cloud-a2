@@ -1,9 +1,17 @@
+<?php 
+    
+include_once 'backend/searchService.php'; 
+    
+?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <nav class="navbar navbar-default">
             <div class="container-fluid">
               <div class="navbar-header">
@@ -20,4 +28,130 @@
             </div>
           </nav>
     </head>
+
+  <div class="list-group">
+    <form id="filterBox" onsubmit="return false;">
+      <div class="list-group-item">
+
+        <div class="pretty p-default p-curve p-pulse">
+          <input type="radio" name="platform" value="Xbox">
+          <div class="state p-success-o">
+            <label> Xbox</label>
+          </div>
+        </div>
+
+        <div class="pretty p-default p-curve p-pulse">
+          <input type="radio" name="platform" value="PlayStation">
+          <div class="state p-success-o">
+            <label> PlayStation</label>
+          </div>
+        </div>
+        
+        <div class="pretty p-default p-curve p-pulse">
+          <input type="radio" name="platform" value="PC">
+          <div class="state p-success-o">
+            <label> PC</label>
+          </div>
+        </div>
+        
+        <div class="pretty p-default p-curve p-pulse">
+          <input type="radio" name="platform" value="" checked>
+          <div class="state p-success-o">
+            <label> ALL</label>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="list-group-item">
+        <div class="pretty p-default p-curve p-pulse">
+          <input type="radio" name="condition" value="brandnew">
+          <div class="state p-success-o">
+            <label> Brand New</label>
+          </div>
+        </div>
+
+        <div class="pretty p-default p-curve p-pulse">
+          <input type="radio" name="condition" value="excellent">
+          <div class="state p-success-o">
+            <label> Excellent</label>
+          </div>
+        </div>
+
+        <div class="pretty p-default p-curve p-pulse">
+          <input type="radio" name="condition" value="good">
+          <div class="state p-success-o">
+            <label> Good</label>
+          </div>
+        </div>
+        
+        <div class="pretty p-default p-curve p-pulse">
+          <input type="radio" name="condition" value="" checked>
+          <div class="state p-success-o">
+            <label> ALL</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="list-group-item">
+        <div class="pretty p-switch p-slim">
+          <input type="checkbox" name="posting" value="Mail" />
+          <div class="state p-success-o">
+            <label> Mail Only</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="list-group-item">
+        <div class="input-group" style="width: 20%">
+          <input type="text" class="form-control" placeholder="Search for..." name="title">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button">Go!</button>
+          </span>
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+  <div id="resultsSection"></div>
+
+
+  <script>
+  $(document).ready(function(){
+    $('#filterBox').change(function(){
+
+      var str = "/backend/searchService.php?search=true";
+
+      platform = $("input[name='platform']:checked").val();
+      posting = $("input[name='posting']:checked").val();
+      condition = $("input[name='condition']:checked").val();
+      title = $("input[name='title']").val();
+
+      if (platform)
+      {
+        str = str+ "&platform="+platform;
+      }
+
+      if (posting)
+      {
+        str = str+ "&posting="+posting;
+      }
+
+      if (condition)
+      {
+        str = str+ "&condition="+condition;
+      }
+
+      if (title)
+      {
+        str = str+ "&title="+title;
+      }
+      $("#resultsSection").load(str);
+    });
+
+    $("#resultsSection").load("/backend/searchService.php?search=true");
+  });
+  </script>
+
 </html>

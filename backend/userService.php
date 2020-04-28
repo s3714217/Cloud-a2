@@ -1,9 +1,11 @@
 <?php
 
 require __DIR__ . '/vendor/autoload.php';
+require_once 'config.php';
+
 use Google\Cloud\Datastore\DatastoreClient;
 
-$projectId = 'mycloudapp-2';
+$projectId = getenv("MY_PROJECT_ID");
 
 
 function register($username, $password, $email, $phone)
@@ -77,7 +79,7 @@ function displayUserInfo($username)
     $key = $datastore->key($kind, htmlspecialchars($username));
     $user = $datastore->lookup($key);
 
-    echo " <img src='https://storage.cloud.google.com/mycloudapp-image-storage/profile.jpg' width='200' height='200'>
+    echo " <img src='https://storage.cloud.google.com/".getenv("MY_BUCKET_ID")."/profile.jpg' width='200' height='200'>
              <h2 style='text-align:center; line-height:300%'></h2>
                 <div>Username: ".htmlspecialchars($username)."</div>
                 <div>Email: ".$user['email']." </div>

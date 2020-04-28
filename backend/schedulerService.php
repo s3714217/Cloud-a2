@@ -2,7 +2,7 @@
 
     //https://cloud.google.com/datastore/docs/datastore-api-tutorial
     require __DIR__ . '/vendor/autoload.php';
-    
+    require_once 'config.php';
 
     use Google\Cloud\Datastore\DatastoreClient;
     use Google\Cloud\Storage\StorageClient;
@@ -17,7 +17,7 @@
 
     function notifyAll()
     {
-            $projectId = 'mycloudapp-2';
+            $projectId = getenv("MY_PROJECT_ID");
             $kind = 'user';
     
             $datastore = new DatastoreClient([

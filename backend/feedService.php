@@ -168,36 +168,36 @@
 
         echo "
             <h2 style='text-align:center; line-height:400%'></h2>
-            <div>Title: ".$item['title']."</div>
+            <div>Nội dung: ".$item['title']."</div>
             <h2 style='text-align:center; line-height:45%'></h2>
-            <div>Item ID: ".$item['accessID']."</div>
+            <div>Mã: ".$item['accessID']."</div>
             <h2 style='text-align:center; line-height:45%'></h2>
-            <div>Condition: ".$item['condition']."</div>
+            <div>Tình trạng: ".$item['condition']."</div>
             <h2 style='text-align:center; line-height:45%'></h2>
-            <div>Platform: ".$item['platform']."</div>
+            <div>Nền tảng: ".$item['platform']."</div>
             <h2 style='text-align:center; line-height:45%'></h2>
-            <div>Delivery type: ".$item['posting']."</div>
+            <div>Nhận hàng: ".$item['posting']."</div>
             <h2 style='text-align:center; line-height:45%'></h2>
-            <div>Date posted: ".$item['date']->format('Y-m-d h:i')."</div>
+            <div>Ngày đăng: ".$item['date']->format('Y-m-d h:i')."</div>
             <h2 style='text-align:center; line-height:45%'></h2>
-            <div>Transaction type: ".$item['transaction']."</div>
+            <div>Phương thức trao đổi: ".$item['transaction']."</div>
             <h2 style='text-align:center; line-height:45%'></h2>
             ";
         if($item['transaction'] != 'Trade only')
         {
-            echo "<div>Price: $".$item['price']."</div>
+            echo "<div>Giá: $".$item['price']."</div>
             <h2 style='text-align:center; line-height:45%'></h2>
             ";
 
         }
-        echo  " <div>Offered by: ".$item['user']."</div>
+        echo  " <div>Đăng bởi: ".$item['user']."</div>
                 <h2 style='text-align:center; line-height:45%'></h2>
-                <div>Description: ".$item['description']."</div>
+                <div>Mô tả: ".$item['description']."</div>
                 <h2 style='text-align:center; line-height:50%'></h2>
         ";
         if($item['posting'] == 'Pick-up')
         {
-          echo "<div>Pick up location:</div>
+          echo "<div>Vùng trao đổi:</div>
           <img src = 'https://maps.googleapis.com/maps/api/staticmap?center=".$item['location']."&zoom=15&size=400x400&region=AU&key=AIzaSyDJ8xJEuceNVuFVNuOpZImdcvyakOYbJYk' width='300' height='300'>";
         }
 

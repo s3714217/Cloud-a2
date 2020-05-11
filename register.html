@@ -12,13 +12,13 @@ include_once 'backend/userService.php';
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     </head>
     <body>
-        <h2 style="text-align:center; line-height:300%"> Account Details</h2>
+        <h2 style="text-align:center; line-height:300%">معلومات الحساب </h2>
         <div class="container" >
         <form method="post">
-            <div style="text-align:center" class="form-group">Username: <input  style="text-align:center" class="form-control" type="text" name="reusername" placeholder="Enter your username" pattern="[A-Za-z0-9]{1,20}"required></div>
-            <div style="text-align:center" class="form-group">Password: <input  style="text-align:center" class="form-control" type="password" name="repassword" placeholder="Enter your password" pattern="[A-Za-z0-9]{1,10}"required></div>
-            <div style="text-align:center" class="form-group">Email:  <input  style="text-align:center" class="form-control" type="email" name="email" placeholder="example@gmail.com" pattern="{1,30}"required></div>
-            <div style="text-align:center" class="form-group">Phone: <input style="text-align:center" class="form-control" type="tel"  name="phone" placeholder="0400123456" pattern="[0-9]{10}" required></div>
+            <div style="text-align:center" class="form-group">اسم المستخدم : <input  style="text-align:center" class="form-control" type="text" name="reusername" placeholder="Enter your username" pattern="[A-Za-z0-9]{1,20}"required></div>
+            <div style="text-align:center" class="form-group">الرقم السري: <input  style="text-align:center" class="form-control" type="password" name="repassword" placeholder="Enter your password" pattern="[A-Za-z0-9]{1,10}"required></div>
+            <div style="text-align:center" class="form-group">الايميل :  <input  style="text-align:center" class="form-control" type="email" name="email" placeholder="example@gmail.com" pattern="{1,30}"required></div>
+            <div style="text-align:center" class="form-group">الجوال : <input style="text-align:center" class="form-control" type="tel"  name="phone" placeholder="0400123456" pattern="[0-9]{10}" required></div>
             <div style="text-align:center"><input type="submit" value="Register" name="register">
             </div>
         </form>

@@ -12,22 +12,22 @@ include_once 'backend/tradeService.php';
         <nav class="navbar navbar-default">
             <div class="container-fluid">
               <div class="navbar-header">
-                <a class="navbar-brand" href="/main.html">Trade Center</a>
+                <a class="navbar-brand" href="/main.html">ركز تبادل </a>
               </div>
               <ul class="nav navbar-nav navbar-right">
-                <li><a href="/post.html"><span class="glyphicon glyphicon-edit"></span> Post</a></li>
-                <li><a href="/trade.html"><span class="glyphicon glyphicon-shopping-cart"></span> My cart</a></li>
-                <li><a href="/search.html"><span class="glyphicon glyphicon-search"></span> Search</a></li>
+                <li><a href="/post.html"><span class="glyphicon glyphicon-edit"></span>الملصق </a></li>
+                <li><a href="/trade.html"><span class="glyphicon glyphicon-shopping-cart"></span>سلة التسوق </a></li>
+                <li><a href="/search.html"><span class="glyphicon glyphicon-search"></span>البحث</a></li>
                 <li><a href="/profile.html"><span class="glyphicon glyphicon-user"></span> 
                   G'day  <?php echo htmlspecialchars($_SESSION["username"]); ?></a></li>
-               <li><a href="/"s><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+               <li><a href="/"s><span class="glyphicon glyphicon-log-out"></span>تسجيل الخروج</a></li>
               </ul>
             </div>
           </nav>
     </head>
 
     <body>
-        <h2 style="text-align:center; line-height:300%">Offer detail</h2>
+        <h2 style="text-align:center; line-height:300%">بيانات العرض</h2>
         <div class="col-sm-2"></div>
        <div class="col-sm-4"> 
             <?php getImg( htmlspecialchars($_SESSION['viewItem']), htmlspecialchars($_SESSION['seller']));?> 
@@ -36,7 +36,7 @@ include_once 'backend/tradeService.php';
             <?php displayFullItem(htmlspecialchars($_SESSION['viewItem'])); ?>
             <h2 style='line-height:45%'></h2>
             <form method="POST">
-                <div><input type="submit" value="Add to cart" name="trade">
+                <div><input type="submit" value="إضافة الى سلة التسوق " name="trade">
             </form> 
         </div>
         

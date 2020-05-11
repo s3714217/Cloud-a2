@@ -12,15 +12,15 @@ include_once 'backend/feedService.php';
         <nav class="navbar navbar-default">
             <div class="container-fluid">
               <div class="navbar-header">
-                <a class="navbar-brand" href="/main.html">Trade Center</a>
+                <a class="navbar-brand" href="/main.html">مركز تجاري</a>
               </div>
               <ul class="nav navbar-nav navbar-right">
-                <li><a href="/post.html"><span class="glyphicon glyphicon-edit"></span> Post</a></li>
-                <li><a href="/trade.html"><span class="glyphicon glyphicon-shopping-cart"></span> My Cart</a></li>
-                <li><a href="/search.html"><span class="glyphicon glyphicon-search"></span> Search</a></li>
+                <li><a href="/post.html"><span class="glyphicon glyphicon-edit"></span> مركز تبادل </a></li>
+                <li><a href="/trade.html"><span class="glyphicon glyphicon-shopping-cart"></span> لة التسوق </a></li>
+                <li><a href="/search.html"><span class="glyphicon glyphicon-search"></span> بحث</a></li>
                 <li><a href="/profile.html"><span class="glyphicon glyphicon-user"></span> 
                   G'day  <?php echo htmlspecialchars($_SESSION["username"]); ?></a></li>
-               <li><a href="/"s><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+               <li><a href="/"s><span class="glyphicon glyphicon-log-out"></span> سجيل الخروج</a></li>
               </ul>
             </div>
           </nav>
@@ -29,13 +29,13 @@ include_once 'backend/feedService.php';
       <div class="panel panel-default">
         <div class="panel-body" style="text-align:left">
           <div class="row">
-            <div class="col-sm-4">Total Trade-able items: <?php echo $tocount;?></div>
-            <div class="col-sm-4">Total Sell-able items: <?php echo $socount;?></div>
-            <div class="col-sm-4">Total posted items: <?php echo $tscount;?></div>
+            <div class="col-sm-4">جموع العناصرالمعروضه للمبادلة : <?php echo $tocount;?></div>
+            <div class="col-sm-4">جموع العناصرالمعروضه للبيع : <?php echo $socount;?></div>
+            <div class="col-sm-4">جموع العناصرالمنشورة : <?php echo $tscount;?></div>
           </div>
         </div>
       </div>
-      <h1 style="text-align:center; line-height:300%">My Feed</h1>
+      <h1 style="text-align:center; line-height:300%">خلاصه</h1>
       <div class="col-sm-3"></div>
       <div class="col-sm-5">
 

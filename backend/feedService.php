@@ -168,36 +168,36 @@
 
         echo "
             <h2 style='text-align:center; line-height:400%'></h2>
-            <div>Title: ".$item['title']."</div>
+            <div>العنوان : ".$item['title']."</div>
             <h2 style='text-align:center; line-height:45%'></h2>
-            <div>Item ID: ".$item['accessID']."</div>
+            <div>عنوان العنصر: ".$item['accessID']."</div>
             <h2 style='text-align:center; line-height:45%'></h2>
-            <div>Condition: ".$item['condition']."</div>
+            <div>الشرط: ".$item['condition']."</div>
             <h2 style='text-align:center; line-height:45%'></h2>
-            <div>Platform: ".$item['platform']."</div>
+            <div>المنصة: ".$item['platform']."</div>
             <h2 style='text-align:center; line-height:45%'></h2>
-            <div>Delivery type: ".$item['posting']."</div>
+            <div>نوع التسليم : ".$item['posting']."</div>
             <h2 style='text-align:center; line-height:45%'></h2>
-            <div>Date posted: ".$item['date']->format('Y-m-d h:i')."</div>
+            <div>تاريخ النشر: ".$item['date']->format('Y-m-d h:i')."</div>
             <h2 style='text-align:center; line-height:45%'></h2>
-            <div>Transaction type: ".$item['transaction']."</div>
+            <div>نوع المعاملة : ".$item['transaction']."</div>
             <h2 style='text-align:center; line-height:45%'></h2>
             ";
         if($item['transaction'] != 'Trade only')
         {
-            echo "<div>Price: $".$item['price']."</div>
+            echo "<div>السعر: $".$item['price']."</div>
             <h2 style='text-align:center; line-height:45%'></h2>
             ";
 
         }
-        echo  " <div>Offered by: ".$item['user']."</div>
+        echo  " <div>اسم الاعلان : ".$item['user']."</div>
                 <h2 style='text-align:center; line-height:45%'></h2>
-                <div>Description: ".$item['description']."</div>
+                <div>الوصف : ".$item['description']."</div>
                 <h2 style='text-align:center; line-height:50%'></h2>
         ";
         if($item['posting'] == 'Pick-up')
         {
-          echo "<div>Pick up location:</div>
+          echo "<div>موقع الاستلام :</div>
           <img src = 'https://maps.googleapis.com/maps/api/staticmap?center=".$item['location']."&zoom=15&size=400x400&region=AU&key=AIzaSyDJ8xJEuceNVuFVNuOpZImdcvyakOYbJYk' width='300' height='300'>";
         }
 

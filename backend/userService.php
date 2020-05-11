@@ -81,9 +81,9 @@ function displayUserInfo($username)
 
     echo " <img src='https://storage.cloud.google.com/".getenv("MY_BUCKET_ID")."/profile.jpg' width='200' height='200'>
              <h2 style='text-align:center; line-height:300%'></h2>
-                <div>Username: ".htmlspecialchars($username)."</div>
-                <div>Email: ".$user['email']." </div>
-                <div>Phone: ".$user['phone']." </div>
+                <div>اسم المستخدم : ".htmlspecialchars($username)."</div>
+                <div>الايميل : ".$user['email']." </div>
+                <div>الجوال : ".$user['phone']." </div>
                 <div>Pushbullet id: ".$user['PBid']." </div>
               
     ";
@@ -110,9 +110,9 @@ function displayedit()
  {
      echo " <form method='post'> 
                 <select name='editing'>
-                          <option value='email'>Email</option>
-                          <option value='phone'>Phone</option>
-                          <option value='password'>Password</option>
+                          <option value='email'>الايميل </option>
+                          <option value='phone'>الجوال </option>
+                          <option value='password'>الرقم السري</option>
                           <option value='PBid'>Pushbullet id</option>
                 </select>
                 <h2 style='text-align:center; line-height:300%'></h2>

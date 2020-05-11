@@ -12,40 +12,40 @@ include_once 'backend/postService.php';
         <nav class="navbar navbar-default">
             <div class="container-fluid">
               <div class="navbar-header">
-                <a class="navbar-brand" href="/main.html">Trade Center</a>
+                <a class="navbar-brand" href="/main.html">ركز تبادل </a>
               </div>
               <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="/post.html"><span class="glyphicon glyphicon-edit"></span> Post</a></li>
-                <li><a href="/trade.html"><span class="glyphicon glyphicon-shopping-cart"></span> My cart</a></li>
-                <li><a href="/search.html"><span class="glyphicon glyphicon-search"></span> Search Offer</a></li>
+                <li class="active"><a href="/post.html"><span class="glyphicon glyphicon-edit"></span> ملصق </a></li>
+                <li><a href="/trade.html"><span class="glyphicon glyphicon-shopping-cart"></span> لة التسوق </a></li>
+                <li><a href="/search.html"><span class="glyphicon glyphicon-search"></span> بحث عن عروض </a></li>
                 <li><a href="/profile.html"><span class="glyphicon glyphicon-user"></span> 
                   G'day  <?php echo htmlspecialchars($_SESSION["username"]); ?></a></li>
-               <li><a href="/"s><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+               <li><a href="/"s><span class="glyphicon glyphicon-log-out"></span> سجيل الخروج</a></li>
               </ul>
             </div>
           </nav>
     </head>
     <body>
         <div class="row">
-            <h1 style="text-align:center; line-height:300%">Post an Offer</h1>
+            <h1 style="text-align:center; line-height:300%">ملصق </h1>
            
             <div class="col-sm-4"></div>
     
             <div class="col-sm-4">
                 <form method="post" enctype="multipart/form-data" >
-                    <div style="text-align:center; line-height:200%" class="form-group">Title: <textarea rows ="1" style="text-align:center" class="form-control" type="text" name="title" placeholder="Enter game title" required></textarea></div>
-                    <div style="text-align:center; line-height:200%" class="form-group">Description: <textarea rows ="4" style="text-align:center" class="form-control" type="text" name="description" placeholder="Enter description" required></textarea></div>
+                    <div style="text-align:center; line-height:200%" class="form-group">عنوان : <textarea rows ="1" style="text-align:center" class="form-control" type="text" name="title" placeholder="Enter game title" required></textarea></div>
+                    <div style="text-align:center; line-height:200%" class="form-group">وصف : <textarea rows ="4" style="text-align:center" class="form-control" type="text" name="description" placeholder="Enter description" required></textarea></div>
                     <div style="text-align:center" class="form-group">
-                        <div style="text-align:center; line-height:200%">Condition:</div>
+                        <div style="text-align:center; line-height:200%">شرط:</div>
                         <select class="form-control" name="condition">
-                          <option value="brandnew">Brand New</option>
-                          <option value="excellent">Excellent</option>
-                          <option value="good">Good</option>
+                          <option value="brandnew">المنتج جديد</option>
+                          <option value="excellent">الة جيدة </option>
+                          <option value="good">يد </option>
                         </select>
                     </div>
 
                     <div style="text-align:center" class="form-group">
-                        <div style="text-align:center; line-height:200%">Platform:</div>
+                        <div style="text-align:center; line-height:200%">منصة:</div>
                         <select class="form-control" name="platform">
                           <option value="Xbox">Xbox</option>
                           <option value="PlayStation">PlayStation</option>
@@ -54,28 +54,28 @@ include_once 'backend/postService.php';
                     </div>
 
                     <div style="text-align:center" class="form-group">
-                        <div style="text-align:center; line-height:200%">Transaction Method:</div>
+                        <div style="text-align:center; line-height:200%">وع المعاملة :</div>
                         <select class="form-control" name="transaction">
-                          <option value="Trade only">Trade Only</option>
-                          <option value="Sell only">Sell Only</option>
-                          <option value="Sell only">Trade and Sell</option>
+                          <option value="Trade only">لمقايضة فقط </option>
+                          <option value="Sell only">لبيع فقط</option>
+                          <option value="Sell only">قايضة او بيع </option>
                         </select>
                     </div>
 
-                    <div style="text-align:center" class="form-group">Price: $<input style="text-align:center" class="form-control" type="number"  name="price" placeholder="Enter price (for Sell Only or Trade and Sell"></div>
+                    <div style="text-align:center" class="form-group">سعر: $<input style="text-align:center" class="form-control" type="number"  name="price" placeholder="Enter price (for Sell Only or Trade and Sell"></div>
 
                     <div style="text-align:center" class="form-group">
-                        <div style="text-align:center; line-height:200%">Posting Method:</div>
+                        <div style="text-align:center; line-height:200%">لوب المراسلة:</div>
                         <select class="form-control" name="posting">
-                          <option value="Pick-up">Pick up</option>
-                          <option value="Mail">Mail post</option>
+                          <option value="Pick-up">إلتقاط</option>
+                          <option value="Mail">ارسال عبر البريد </option>
                         </select>
                     </div>
 
-                    <div style="text-align:center" class="form-group">Pick up suburb:<input style="text-align:center" class="form-control" type="text"  name="location" placeholder="Enter prefer pick up suburb (for Pick-up only)"></div>
+                    <div style="text-align:center" class="form-group">التقاط في ضاحية المدينة:<input style="text-align:center" class="form-control" type="text"  name="location" placeholder="دخل الضاحية المفضلة – (للاستلام فقط) "></div>
 
 
-                    <div style="text-align:center; line-height:200%" class="form-group">Upload an Image:</div><input type='file' name="img" required accept="image/*"/> 
+                    <div style="text-align:center; line-height:200%" class="form-group">حميل صورة:</div><input type='file' name="img" required accept="image/*"/> 
                     <div style="text-align:center"><input type="submit" value="Post" name="post"></div>
                 </form>
             </div>

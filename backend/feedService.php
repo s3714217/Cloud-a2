@@ -79,15 +79,15 @@
           </div>
          
           <div class='col-sm-8' style='text-align:left'>
-          <div>Title:".$display['title']."</div>
-            <div>Transaction method: ".$display['transaction']."</div>
-            <div>Platform: ".$display['platform']."</div>
-            <div>Date posted: ".$display['date']->format('Y-m-d h:i')."</div>
-            <div>Posted by: ".$display['user']."</div>
+          <div>العنوان :".$display['title']."</div>
+            <div>نوع المعاملة : ".$display['transaction']."</div>
+            <div>المنصة: ".$display['platform']."</div>
+            <div>تاريخ النشر: ".$display['date']->format('Y-m-d h:i')."</div>
+            <div>اسم الاعلان : ".$display['user']."</div>
             ";
                 if($display['transaction'] != "Trade only")
                 {
-                    echo  "<div>Price: $".$display['price']."</div>";
+                    echo  "<div>السعر: $".$display['price']."</div>";
                 }
            echo "
           </div>
@@ -131,15 +131,15 @@
           </div>
          
           <div class='col-sm-8' style='text-align:left'>
-          <div>Title:".$display['title']."</div>
-            <div>Transaction method: ".$display['transaction']."</div>
-            <div>Platform: ".$display['platform']."</div>
-            <div>Date posted: ".$display['date']->format('Y-m-d h:i')."</div>
-            <div>Posted by: ".$display['user']."</div>
+          <div>العنوان :".$display['title']."</div>
+            <div>نوع المعاملة : ".$display['transaction']."</div>
+            <div>المنصة: ".$display['platform']."</div>
+            <div>تاريخ النشر: ".$display['date']->format('Y-m-d h:i')."</div>
+            <div>اسم الاعلان : ".$display['user']."</div>
             ";
                 if($display['transaction'] != "Trade only")
                 {
-                    echo  "<div>Price: $".$display['price']."</div>";
+                    echo  "<div>السعر: $".$display['price']."</div>";
                 }
            echo "
           </div>
